@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+
+<!-- Componentes JSF -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html">
+<head>
+
+<meta name="description" content="Free Web tutorials"/>
+<meta name="keywords" content="HTML,CSS,XML,JavaScript"/>
+<meta name="author" content="Lucas"/>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8" />
+
+<title>Livro</title>
+</head>
+
+<h:body>
+
+	<h1>Novo Livro</h1>
+	
+	<h:form>
+
+		<fieldset>
+
+			<LEGEND>Dados do livro</LEGEND>
+
+			<h:panelGrid columns="1"> <!-- Mexe no espaço vertical da tela -->
+			
+			<h:outputLabel value="Titulo : " for="idTitulo" />
+			
+			<!-- Passando os atributos do bean dentro do input para referenciar com expressionLanguage -->
+			
+			<h:inputText id="idTitulo" value="#{livroBean.livro.titulo}"/>
+			
+			<h:outputLabel value="Isbn : " for="idIsbn" />
+			<h:inputText id="idIsbn" value="#{livroBean.livro.isbn}"/>
+			
+			<h:outputLabel value="Preço : " for="idPreco" />
+			<h:inputText id="idPreco" value="#{livroBean.livro.preco}"/>
+			
+			<h:outputLabel value="Data de lançamento : " for="idDate" />
+			<h:inputText id="idDate" value="#{livroBean.livro.data}"/>
+			
+			<hr/>
+			
+			<h1>Dados do autor</h1>
+			
+			<!-- 
+			
+				Realizando um forEach para preencher o campo select
+				var : contador
+				itemLabel : Onde nos recuperamos o nome
+				itemValue : Onde Recuperamos o id			
+			
+				Dentro do h:selectOneMenu usaremos a propriedade value para capturar o ID do autor selecionado
+			 -->
+			
+
+			
+			<h:selectOneMenu>
+				<f:selectItems value="#{livroBean.autores}" var="autor" itemLabel="#{autor.nome}" itemValue="#{autor.autor}"/>
+			</h:selectOneMenu>
+			
+
+		
+			<h:commandButton value="Gravar Autor"/>
+			
+			
+			<br/>
+			
+			
+			<!-- No action indicaremos a classe e o metodo a ser executado  -->
+			
+			<h:commandButton value="Gravar" action="#{livroBean.cadastrar()}"/>
+
+
+				</h:panelGrid>
+		</fieldset>
+	</h:form>
+
+</h:body>
+
+</html>

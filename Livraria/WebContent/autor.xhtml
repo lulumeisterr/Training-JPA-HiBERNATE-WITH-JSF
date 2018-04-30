@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+
+<!-- Componentes JSF -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+
+<meta name="description" content="Free Web tutorials"/>
+<meta name="keywords" content="HTML,CSS,XML,JavaScript"/>
+<meta name="author" content="Lucas"/>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8" />
+
+<title>Livro</title>
+</head>
+
+<h:body>
+
+	<h1>Novo Livro</h1>
+
+	<h:form>
+
+		<fieldset>
+
+			<LEGEND>Dados do autor</LEGEND>
+
+			<h:panelGrid columns="1"> <!-- Mexe no espaço vertical da tela -->
+			
+			<h:outputLabel value="Nome do Autor : " for="idAutor" />
+			
+			<!-- Passando os atributos do bean dentro do input para referenciar com expressionLanguage -->
+			
+			<h:inputText id="idAutor" value="#{autorBean.autor.nome}"/>
+						
+			<br/>
+			
+			<!-- No action indicaremos a classe e o metodo a ser executado  -->
+			
+			<h:commandButton value="Gravar" action="#{autorBean.cadastrar()}"/>
+
+
+				</h:panelGrid>
+		</fieldset>
+	</h:form>
+
+</h:body>
+
+</html>
