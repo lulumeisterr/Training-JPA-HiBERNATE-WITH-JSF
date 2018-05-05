@@ -58,24 +58,20 @@
 			
 				Dentro do h:selectOneMenu usaremos a propriedade value para capturar o ID do autor selecionado
 			 -->
+			<h:outputLabel value="Selecione o autor" for="autor"></h:outputLabel>
 			
-
-			
-			<h:selectOneMenu>
+			<h:selectOneMenu value="#{livroBean.idAutor}">
 				<f:selectItems value="#{livroBean.autores}" var="autor" itemLabel="#{autor.nome}" itemValue="#{autor.autor}"/>
 			</h:selectOneMenu>
 			
-
-		
-			<h:commandButton value="Gravar Autor"/>
-			
+			<h:commandButton value="Gravar Autor" action="#{livroBean.gravar}"/>
 			
 			<br/>
 			
 			
 			<!-- No action indicaremos a classe e o metodo a ser executado  -->
 			
-			<h:commandButton value="Gravar" action="#{livroBean.cadastrar()}"/>
+			<h:commandButton value="Gravar Autor e livro" action="#{livroBean.cadastrar()}"/>
 
 
 				</h:panelGrid>

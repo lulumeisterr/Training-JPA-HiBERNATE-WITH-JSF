@@ -20,7 +20,6 @@ public class LivroBO {
 
 	public void LivroCadastro(Livro l){
 
-
 		EntityManager em = fa.createEntityManager();
 
 		Autor a = new Autor();
@@ -28,13 +27,12 @@ public class LivroBO {
 
 		LivroDAO Ldao = new LivroDAOimpl(em);
 
-
 		List<Autor> aut = new ArrayList<>();
 		aut.add(a);
 
 		l.setAutores(aut);
+		
 		try{
-
 			Ldao.Cadastrar(l);
 			Ldao.Salvar();
 
@@ -48,7 +46,7 @@ public class LivroBO {
 
 	public List<Autor> ListarTodos(){
 		EntityManager em = fa.createEntityManager();
-		LivroDAO Ldao = new LivroDAOimpl(em);
+		AutorDAO Ldao = new AutorDAOimpl(em);
 		List<Autor> lista = Ldao.listarAutores();
 		em.close();
 		return lista;
@@ -56,11 +54,14 @@ public class LivroBO {
 	}
 
 
-	public void ListarPorId(int id) {
+	public List<Autor> ListarPorId(int id) {
+		
 		EntityManager em = fa.createEntityManager();
-		LivroDAO Ldao = new LivroDAOimpl(em);
-		Ldao.BuscarPorId(id);
-		em.close();	
+		AutorDAO Ldao = new AutorDAOimpl(em);
+		List<Autor> lista = Ldao.BuscarPorId(id);
+		em.close();
+
+		return lista;
 	}
 	
 	

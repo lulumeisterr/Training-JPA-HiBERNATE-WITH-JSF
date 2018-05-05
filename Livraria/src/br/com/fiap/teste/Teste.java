@@ -24,14 +24,13 @@ public class Teste {
 			LivroDAO Ldao = new LivroDAOimpl(em);
 			AutorDAO Adao = new AutorDAOimpl(em);
 			
-			Autor a = new Autor("Joana");
-			Livro l = new Livro("Teste" , "1021" , 25 , "27/02/98");
-			
+			Autor a = new Autor(1 , "Joana");
 			
 			List<Autor> aut = new ArrayList<>();
 			aut.add(a);
 			
-			l.setAutores(aut);
+			Livro l = new Livro("Teste" , "1021" , 25 , "27/02/98" , aut);
+	
 	
 			try{
 				

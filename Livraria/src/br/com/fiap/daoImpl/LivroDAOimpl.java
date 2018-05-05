@@ -16,21 +16,6 @@ public class LivroDAOimpl extends GenericDAOimpl<Livro, Integer> implements Livr
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public List<Autor> listarAutores() {
-		return em.createQuery("from Autor" , Autor.class)
-				.getResultList();
-
-	}
-
-	@Override
-	public List<Autor> BuscarPorId(int id) {
-		return em.createQuery("from Autor a where a.autor = :n", Autor.class)
-				.setParameter("n", id).getResultList();
-	}
-
-
-
 	
 	
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
+import br.com.fiap.BO.AutorBO;
 import br.com.fiap.BO.LivroBO;
 import br.com.fiap.model.entity.Autor;
 import br.com.fiap.model.entity.Livro;
@@ -13,12 +14,14 @@ import br.com.fiap.model.entity.Livro;
 public class LivroBean {
 	
 	private Livro livro;
+	private int idAutor;
 	
 	@PostConstruct
 	public void init(){
 		this.livro = new Livro();
 		
 	}
+	
 
 	public String cadastrar() throws Exception{
 		
@@ -28,7 +31,7 @@ public class LivroBean {
 		Lbo.LivroCadastro(livro);
 		
 		if(livro.getAutores().isEmpty()){
-			return "erro.xhtml";
+			throw new Exception("Deve contar um autor");
 		}
 		
 		//Para o formulario voltar ser null
@@ -51,6 +54,17 @@ public class LivroBean {
 	 * Criando o metodo apenas para associar-se com o livro
 	 */
 	
+	public void gravar(){
+
+		LivroBO bo = new LivroBO();
+		bo.ListarPorId(this.idAutor);
+		
+		Autor a = new Autor();
+		this.livro.adicionaAutor(a);
+		
+		System.out.println(idAutor + a.getNome());
+		
+	}
 
 	
 	public Livro getLivro() {
@@ -62,6 +76,17 @@ public class LivroBean {
 	public void setLivro(Livro livro) {
 		this.livro = livro;
 	}
-	
+
+
+
+	public int getIdAutor() {
+		return idAutor;
+	}
+
+
+
+	public void setIdAutor(int idAutor) {
+		this.idAutor = idAutor;
+	}
 	
 }

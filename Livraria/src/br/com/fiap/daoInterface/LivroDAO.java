@@ -8,7 +8,5 @@ import br.com.fiap.model.entity.Livro;
 
 public interface LivroDAO extends GenericDAO<Livro, Integer>{
 	
-	List<Autor> listarAutores ();
-	List<Autor> BuscarPorId(int id);
 	
 }

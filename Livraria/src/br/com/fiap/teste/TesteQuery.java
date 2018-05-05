@@ -5,7 +5,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
+import br.com.fiap.BO.LivroBO;
+import br.com.fiap.daoImpl.AutorDAOimpl;
 import br.com.fiap.daoImpl.LivroDAOimpl;
+import br.com.fiap.daoInterface.AutorDAO;
 import br.com.fiap.daoInterface.LivroDAO;
 import br.com.fiap.model.entity.Autor;
 import br.com.fiap.singleton.EntityManagerFactorySingleton;
@@ -17,9 +20,10 @@ public class TesteQuery {
 		EntityManagerFactory fa = EntityManagerFactorySingleton.getInstance();
 		EntityManager em = fa.createEntityManager();
 
-		LivroDAO Ldao = new LivroDAOimpl(em);
+		AutorDAO Ldao = new AutorDAOimpl(em);
 
-		List<Autor> lista = Ldao.listarAutores();
+
+		List<Autor> lista = new LivroBO().ListarPorId(1);
 
 		System.out.println("Autores");
 

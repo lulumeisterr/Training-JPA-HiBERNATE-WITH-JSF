@@ -1,7 +1,5 @@
 package br.com.fiap.BO;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
@@ -24,8 +22,8 @@ public class AutorBO {
 		
 		AutorDAO dao = new AutorDAOimpl(em);	
 		
-		try {
-			
+		try{
+
 		dao.Cadastrar(autor);
 		dao.Salvar();
 		

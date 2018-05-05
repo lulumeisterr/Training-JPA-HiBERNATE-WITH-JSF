@@ -1,12 +1,13 @@
 package br.com.fiap.model.entity;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,8 +16,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import org.hibernate.engine.internal.Cascade;
 
 
 @Entity
@@ -32,23 +31,32 @@ public class Livro implements Serializable{
 	@Column(name = "cd_livro")
 	private int codigo;
 	
-	@Column(name = "nm_titulo")
+	@Column(name = "nm_titulo" , nullable = false)
 	public String titulo;
 	
 	@Column(name = "ds_isbn")
 	public String isbn;
 	
-	@Column(name = "vl_preco")
+	@Column(name = "vl_preco" , nullable = false)
 	public double preco;
 	
 	@Column(name = "dt_lancamento")
 	public String data;
 
 	@ManyToMany(cascade = CascadeType.PERSIST)
-	@JoinTable(name = "T_AULA_LIVRO_AUTOR" , joinColumns = @JoinColumn(name = "cd_livro") , 
-	inverseJoinColumns = @JoinColumn(name = "cd_autor"))
-	private List<Autor> autores;
+	@JoinTable(name = "T_AULA_LIVRO_AUTOR" , joinColumns =@JoinColumn(name = "cd_livro" , nullable = false , updatable = false) , 
+	inverseJoinColumns = @JoinColumn(name = "cd_autor" , nullable = false, updatable = false))
+	
+	private List<Autor> autores = new ArrayList<>();
 
+	
+	public void adicionaAutor(Autor autor) {
+		if (!this.autores.contains(autor)) {
+			this.autores.add(autor);
+		}
+	}
+	
+	
 	public Livro() {
 	}
 
@@ -60,19 +68,16 @@ public class Livro implements Serializable{
 		this.autores = autores;
 	}
 
-
-
-
-	public Livro(String titulo, String isbn, double preco, String data) {
+	public Livro(String titulo, String isbn, double preco, String data, List<Autor> autores) {
 		super();
 		
-
 		this.titulo = titulo;
 		this.isbn = isbn;
 		this.preco = preco;
 		this.data = data;
-	
+		this.autores = autores;
 	}
+
 
 	public int getCodigo() {
 		return codigo;

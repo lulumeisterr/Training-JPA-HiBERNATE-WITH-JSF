@@ -8,11 +8,11 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <head>
 
-<meta name="description" content="Free Web tutorials"/>
-<meta name="keywords" content="HTML,CSS,XML,JavaScript"/>
-<meta name="author" content="Lucas"/>
+<meta name="description" content="Free Web tutorials" />
+<meta name="keywords" content="HTML,CSS,XML,JavaScript" />
+<meta name="author" content="Lucas" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta charset="UTF-8" />
 
 <title>Livro</title>
@@ -28,22 +28,26 @@
 
 			<LEGEND>Dados do autor</LEGEND>
 
-			<h:panelGrid columns="1"> <!-- Mexe no espaço vertical da tela -->
-			
-			<h:outputLabel value="Nome do Autor : " for="idAutor" />
-			
-			<!-- Passando os atributos do bean dentro do input para referenciar com expressionLanguage -->
-			
-			<h:inputText id="idAutor" value="#{autorBean.autor.nome}"/>
-						
-			<br/>
-			
-			<!-- No action indicaremos a classe e o metodo a ser executado  -->
-			
-			<h:commandButton value="Gravar" action="#{autorBean.cadastrar()}"/>
+			<h:panelGrid columns="1">
+				<!-- Mexe no espaço vertical da tela -->
+
+				<h:outputLabel value="Codigo do Autor : " for="cdAutor" />
+				<h:inputText id="cdAutor" value="#{autorBean.autor.autor}" />
+
+				<h:outputLabel value="Nome do Autor : " for="idAutor" />
+
+				<!-- Passando os atributos do bean dentro do input para referenciar com expressionLanguage -->
+
+				<h:inputText id="idAutor" value="#{autorBean.autor.nome}" />
+
+				<br />
+
+				<!-- No action indicaremos a classe e o metodo a ser executado  -->
+
+				<h:commandButton value="Gravar" action="#{autorBean.cadastrar()}" />
 
 
-				</h:panelGrid>
+			</h:panelGrid>
 		</fieldset>
 	</h:form>
 
